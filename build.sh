@@ -72,7 +72,10 @@ completion()
         rm -rf $anykernel
         END=$(date +"%s")
         DIFF=$(($END - $START))
-        curl --upload-file $HOME/$zip_name https://free.keep.sh; echo
+        SERVER=$(curl -s https://api.gofile.io/getServer | jq  -r '.data|.server')
+        UPLOAD=$(curl -F file=$HOME/$zip_name https://${SERVER}.gofile.io/uploadFile)
+        LINK=$(echo $UPLOAD | jq -r '.data|.downloadPage')
+        echo $LINK
         rm $HOME/$zip_name
         echo -e ${LGR} "############################################"
         echo -e ${LGR} "############# OkThisIsEpic!  ##############"
