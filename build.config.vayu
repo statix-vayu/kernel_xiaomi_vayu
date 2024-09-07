@@ -1,0 +1,26 @@
+ARCH=arm64
+BRANCH=android-msm-beryllium-4.9
+DEFCONFIG=vayu_defconfig
+NM=llvm-nm 
+OBJCOPY=llvm-objcopy 
+CC=clang
+LLVM_IAS=1
+AR=llvm-ar 
+OBJDUMP=llvm-objdump 
+STRIP=llvm-strip 
+LLVM=1
+CLANG_TRIPLE=aarch64-linux-gnu-
+CROSS_COMPILE=aarch64-linux-android-
+CROSS_COMPILE_ARM32=arm-linux-androideabi-
+CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r487747c/bin/
+LD_LIBRARY_PATH=${ROOT_DIR}/prebuilts-master/clang/host/linux-x86/clang-r487747c/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+LINUX_GCC_CROSS_COMPILE_ARM32_PREBUILTS_BIN=prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin
+EXTRA_CMDS=''
+KERNEL_DIR=kernel/msm-4.14
+FILES="
+arch/arm64/boot/Image.gz-dtb
+vmlinux
+System.map
+"
